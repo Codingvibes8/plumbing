@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 
 const HeroPage = () => {
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden px-8">
+    <section className="relative min-h-screen flex items-center py-20 md:py-28 overflow-hidden px-8">
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -34,7 +34,7 @@ const HeroPage = () => {
             <h1 className="text-yellow-200 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
               Professional Plumbing Services You Can Trust
             </h1>
-            <p className="text-xl flex items-center px-2 py-2 text-white bg-gray-400 rounded-lg">
+            <p className="z-40 max-w-md text-xl flex items-center px-2 py-2 text-yellow-100 text-balance  text-blue-900 rounded-lg">
               Expert plumbers delivering reliable solutions for all your
               residential and commercial plumbing needs.
             </p>
