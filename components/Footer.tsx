@@ -2,14 +2,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { siteConfig } from "@/config/site";
-import {
-  Facebook,
-  Instagram,
-  Twitter,
-  Mail,
-  Phone,
-  MapPin,
-} from "lucide-react";
+import { FaFacebook } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 export function Footer() {
   return (
@@ -29,7 +25,7 @@ export function Footer() {
                 rel="noopener noreferrer"
               >
                 <Button variant="ghost" size="icon" aria-label="Twitter">
-                  <Twitter className="h-5 w-5" />
+                  <FaTwitter className="h-5 w-5" />
                 </Button>
               </Link>
               <Link
@@ -38,7 +34,7 @@ export function Footer() {
                 rel="noopener noreferrer"
               >
                 <Button variant="ghost" size="icon" aria-label="Facebook">
-                  <Facebook className="h-5 w-5" />
+                  <FaFacebook className="h-5 w-5" />
                 </Button>
               </Link>
               <Link
@@ -47,7 +43,7 @@ export function Footer() {
                 rel="noopener noreferrer"
               >
                 <Button variant="ghost" size="icon" aria-label="Instagram">
-                  <Instagram className="h-5 w-5" />
+                  <FaInstagram className="h-5 w-5" />
                 </Button>
               </Link>
             </div>

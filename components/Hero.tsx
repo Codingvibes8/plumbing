@@ -28,11 +28,13 @@ const Hero = () => {
             24/7 Emergency Service
           </Badge>
           <h2
-            className={"text-3xl font-serif font-bold text-primary-foreground"}
+            className={
+              "text-3xl font-serif font-bold text-primary-foreground dark:text-slate-200"
+            }
           >
             Apex Plumbing
           </h2>
-          <h1 className="text-primary-foreground text-xl font-bold tracking-tight">
+          <h1 className="text-primary-foreground dark:text-slate-200 text-xl font-bold tracking-tight">
             Professional Plumbing Services
           </h1>
           <p className="max-w-lg text-sm px-4 py-3 text-yellow-100 text-balance bg-slate-600/90 rounded-lg backdrop-blur-sm">
@@ -42,7 +44,7 @@ const Hero = () => {
           <div className="flex items-center justify-center pt-4">
             <Button
               size="lg"
-              className="w-fit bg-indigo-950 hover:bg-indigo-900"
+              className="w-fit dark:bg-indigo-950 hover:bg-indigo-900 dark:text-white"
               asChild
             >
               <Link href="/contact">Services</Link>

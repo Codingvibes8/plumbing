@@ -2,9 +2,9 @@ import { Badge } from "@/components/ui/badge";
 
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 
-import CtaSection from "@/components/CtaSection";
+import CtaSection from "@/components/CTASection";
 
-import ServicePage from "@/app/services";
+import ServicesPage from "@/app/services/page";
 import ChooseUs from "@/components/ChooseUs";
 import HeroPage from "@/components/Hero";
 
@@ -15,7 +15,7 @@ export default function HomePage() {
       <HeroPage />
 
       {/* Services Section */}
-      <ServicePage />
+      <ServicesPage />
 
       {/* Why Choose Us Section */}
       <ChooseUs />
