@@ -37,14 +37,14 @@ export const metadata: Metadata = {
   creator: siteConfig.name,
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "en_us",
     url: siteConfig.url,
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
     images: [
       {
-        url: `${siteConfig.url}/og-image.jpg`,
+        url: `${siteConfig.url}/plumbing-hero.jpg`,
         width: 1200,
         height: 630,
         alt: siteConfig.name,
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [`${siteConfig.url}/og-image.jpg`],
-    creator: "@plumbingpros",
+    creator: "@dayoadeniji",
   },
   icons: {
     icon: "/favicon.ico",

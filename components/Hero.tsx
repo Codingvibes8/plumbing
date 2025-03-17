@@ -1,21 +1,14 @@
+import React from "react";
+import { CheckCircle, Clock, ShieldCheck } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 import Image from "next/image";
 
-import Link from "next/link";
-
-import { siteConfig } from "@/config/site";
-import {
-  Badge,
-  CheckCircle,
-  Clock,
-  PhoneCall,
-  ShieldCheck,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-
-const HeroPage = () => {
+const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center py-20 md:py-28 overflow-hidden px-8">
-      {/* Background image */}
+    <div className="relative min-h-[calc(100vh - h-16] md:min-h-[700px] overflow-hidden px-6">
+      {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/plumbing-hero.jpg"
@@ -23,71 +16,67 @@ const HeroPage = () => {
           fill
           priority
           className="object-cover"
+          quality={100}
         />
-      </div>
 
-      <div className="container relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Content Section */}
-          <div className="space-y-6">
-            <Badge className="px-3 py-1 text-sm">24/7 Emergency Service</Badge>
-            <h1 className="text-yellow-200 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-              Professional Plumbing Services You Can Trust
-            </h1>
-            <p className="z-40 max-w-md text-xl flex items-center px-2 py-2 text-yellow-100 text-balance  text-blue-900 rounded-lg">
-              Expert plumbers delivering reliable solutions for all your
-              residential and commercial plumbing needs.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button size="lg" className={"bg-indigo-950"} asChild>
-                <Link href="/contact">Get a Free Quote</Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="gap-2 bg-yellow-200"
-                asChild
-              >
-                <Link
-                  href={`tel:${siteConfig.contact.phone.replace(/[^0-9]/g, "")}`}
-                  className={"text-white"}
-                >
-                  <PhoneCall className="h-4 w-4 text-white" />
-                  {siteConfig.contact.phone}
-                </Link>
-              </Button>
+        <div className="absolute inset-0 bg-black/50" />
+      </div>
+      <div className="flex flex-col sm:flex-row gap-8 md:gap-12 items-center">
+        {/* Content Section (60% width on desktop) */}
+        <div className="lg:w-[60%] pt-20 w-full space-y-4 z-10">
+          <Badge className="px-3 py-4 bg-indigo-950 text-white">
+            24/7 Emergency Service
+          </Badge>
+          <h2
+            className={"text-3xl font-serif font-bold text-primary-foreground"}
+          >
+            Apex Plumbing
+          </h2>
+          <h1 className="text-primary-foreground text-xl font-bold tracking-tight">
+            Professional Plumbing Services
+          </h1>
+          <p className="max-w-lg text-sm px-4 py-3 text-yellow-100 text-balance bg-slate-600/90 rounded-lg backdrop-blur-sm">
+            Expert plumbers delivering reliable solutions for all your
+            residential and commercial plumbing needs.
+          </p>
+          <div className="flex items-center justify-center pt-4">
+            <Button
+              size="lg"
+              className="w-fit bg-indigo-950 hover:bg-indigo-900"
+              asChild
+            >
+              <Link href="/contact">Services</Link>
+            </Button>
+          </div>
+          <div className="flex flex-wrap gap-2 pt-6 items-center">
+            <div className="flex items-center gap-2 text-white">
+              <CheckCircle className="h-5 w-5" />
+              <span>Licensed & Insured</span>
             </div>
-            <div className="flex flex-wrap gap-6 pt-6 items-center">
-              <div className="flex items-center gap-2 text-white">
-                <CheckCircle className="h-5 w-5" />
-                <span>Licensed & Insured</span>
-              </div>
-              <div className="flex items-center gap-2 text-white">
-                <Clock className="h-5 w-5" />
-                <span>Same Day Service</span>
-              </div>
-              <div className="flex items-center gap-2 text-white">
-                <ShieldCheck className="h-5 w-5" />
-                <span>100% Satisfaction</span>
-              </div>
+            <div className="flex items-center gap-2 text-white">
+              <Clock className="h-5 w-5" />
+              <span>Same Day Service</span>
+            </div>
+            <div className="flex items-center gap-2 text-white">
+              <ShieldCheck className="h-5 w-5" />
+              <span>100% Satisfaction</span>
             </div>
           </div>
+        </div>
 
-          {/* Image Section */}
-          {/*<div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-xl">*/}
-          {/*  <Image*/}
-          {/*    src="/plumb2.jpg"*/}
-          {/*    alt="Professional plumber at work"*/}
-          {/*    fill*/}
-          {/*    priority*/}
-          {/*    className="object-cover"*/}
-          {/*    sizes="(max-width: 1024px) 100vw, 50vw"*/}
-          {/*  />*/}
-          {/*</div>*/}
+        {/* Image Section (40% width on desktop) */}
+        <div className="lg:w-[40%] w-full relative h-[400px] lg:h-[500px] rounded-xl overflow-hidden shadow-2xl">
+          <Image
+            src="/plumb2.jpg"
+            alt="Professional plumber at work"
+            fill
+            priority
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 40vw"
+          />
         </div>
       </div>
-    </section>
+    </div>
   );
 };
-
-export default HeroPage;
+export default Hero;
