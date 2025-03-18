@@ -16,17 +16,16 @@ export function Navbar() {
   const isMobile = useMobile();
   const [isOpen, setIsOpen] = useState(false);
 
-  // Close mobile menu when route changes
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
 
   return (
-    <header className="sticky px-8 top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky px-8 top-0 z-50 w-full border-b bg-green-300 dark:bg-slate-900">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center space-x-2">
-            <span className="text-xl font-bold text-primary">
+            <span className="text-xl font-bold text-primary dark:text-white">
               Apex Plumbing
             </span>
           </Link>
@@ -38,6 +37,7 @@ export function Navbar() {
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(!isOpen)}
+              className="dark:text-white"
             >
               {isOpen ? (
                 <X className="h-6 w-6" />
@@ -46,23 +46,23 @@ export function Navbar() {
               )}
             </Button>
             {isOpen && (
-              <div className="absolute top-16 left-0 right-0 z-50 flex flex-col gap-4 border-b bg-background p-4 shadow-lg">
+              <div className="absolute top-16 left-0 right-0 z-50 flex flex-col gap-4 border-b bg-background dark:bg-slate-800 p-4 shadow-lg">
                 {navItems.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
                     className={cn(
-                      "text-lg font-medium transition-colors hover:text-primary",
+                      "text-lg font-medium transition-colors hover:text-primary dark:hover:text-blue-400",
                       pathname === item.href
-                        ? "text-primary"
-                        : "text-muted-foreground",
+                        ? "text-primary dark:text-blue-400"
+                        : "text-muted-foreground dark:text-gray-300",
                     )}
                   >
                     {item.label}
                   </Link>
                 ))}
                 <div className="flex items-center justify-between pt-4 border-t">
-                  <Button size="sm" className="gap-2">
+                  <Button size="sm" className="gap-2 dark:text-white">
                     <PhoneCall className="h-4 w-4" />
                     <span className="hidden sm:inline-block">
                       {siteConfig.contact.phone}
@@ -81,10 +81,10 @@ export function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary",
+                  "text-sm font-medium transition-colors hover:text-primary dark:hover:text-blue-400",
                   pathname === item.href
-                    ? "text-primary"
-                    : "text-muted-foreground",
+                    ? "text-primary dark:text-blue-400"
+                    : "text-muted-foreground dark:text-gray-300",
                 )}
               >
                 {item.label}
@@ -95,7 +95,7 @@ export function Navbar() {
 
         {!isMobile && (
           <div className="flex items-center gap-4">
-            <Button size="sm" className="gap-2">
+            <Button size="sm" className="gap-2 dark:text-white">
               <PhoneCall className="h-4 w-4" />
               {siteConfig.contact.phone}
             </Button>

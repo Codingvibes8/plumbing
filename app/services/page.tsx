@@ -21,7 +21,6 @@ import {
   ShieldCheck,
   Clock,
 } from "lucide-react";
-import CTASection from "@/components/CTASection";
 
 export const metadata: Metadata = {
   title: "Plumbing Services",
@@ -183,7 +182,7 @@ export default function ServicesPage() {
                       </ul>
                     </CardContent>
                     <CardFooter>
-                      <Button asChild>
+                      <Button asChild className="bg-blue-600 hover:bg-blue-700">
                         <Link href={service.href}>Learn More</Link>
                       </Button>
                     </CardFooter>
@@ -225,7 +224,9 @@ export default function ServicesPage() {
                       <CardFooter>
                         <Button
                           asChild
-                          className={"flex items-center justify-center mb-4"}
+                          className={
+                            "flex items-center justify-center mb-4 bg-blue-600 hover:bg-blue-700"
+                          }
                         >
                           <Link href={service.href}>Learn More</Link>
                         </Button>
@@ -264,7 +265,10 @@ export default function ServicesPage() {
                         </ul>
                       </CardContent>
                       <CardFooter>
-                        <Button asChild>
+                        <Button
+                          asChild
+                          className="bg-blue-600 hover:bg-blue-700"
+                        >
                           <Link href={service.href}>Learn More</Link>
                         </Button>
                       </CardFooter>
@@ -302,7 +306,10 @@ export default function ServicesPage() {
                         </ul>
                       </CardContent>
                       <CardFooter>
-                        <Button asChild>
+                        <Button
+                          asChild
+                          className="bg-blue-600 hover:bg-blue-700"
+                        >
                           <Link href={service.href}>Learn More</Link>
                         </Button>
                       </CardFooter>
@@ -397,8 +404,6 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-
-      <CTASection />
     </>
   );
 }

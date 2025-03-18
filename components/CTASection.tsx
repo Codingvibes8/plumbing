@@ -5,9 +5,9 @@ import { siteConfig } from "@/config/site";
 
 export default function CTASection() {
   return (
-    <section className="py-16 md:py-24">
+    <section className="">
       <div className="container">
-        <div className="rounded-xl bg-primary text-primary-foreground p-8 md:p-12 lg:p-16 text-center">
+        <div className="rounded-xl text-gray-800 p-8 md:p-12 lg:p-16 text-center">
           <div className="max-w-3xl mx-auto space-y-6">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
               Need a Plumber Today?
