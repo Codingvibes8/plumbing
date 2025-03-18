@@ -6,9 +6,9 @@ This SEO-optimized plumbing website includes:
 
 1. **Responsive Design**
 
-1. Fully responsive layout that works on all devices
-2. Mobile-friendly navigation with hamburger menu
-3. Optimized images and content for all screen sizes
+2. Fully responsive layout that works on all devices
+3. Mobile-friendly navigation with hamburger menu
+4. Optimized images and content for all screen sizes
 
 
 
