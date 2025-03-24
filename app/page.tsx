@@ -1,5 +1,3 @@
-import CtaSection from "@/components/CTASection";
-
 import ServicesPage from "@/app/services/page";
 import ChooseUs from "@/components/ChooseUs";
 import HeroPage from "@/components/Hero";
@@ -18,14 +16,11 @@ export default function HomePage() {
       <ChooseUs />
 
       {/* Testimonials Section */}
-      <section className="py-16 md:py-24 bg-muted/50">
+      <section className="py-16 flex items-center justify-center md:py-24 bg-muted/50">
         <div className="container">
           <TestimonialGrid />
         </div>
       </section>
-
-      {/* CTA Section */}
-      <CtaSection />
     </>
   );
 }

@@ -58,7 +58,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
       <section className="py-16 md:py-24 bg-muted/50">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+            <h2 className="text-xl md:text-4xl font-bold tracking-tight mb-4">
               Why Choose Our {service.title}
             </h2>
             <p className="text-lg text-muted-foreground">
@@ -78,7 +78,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
                       <h3 className="text-xl font-medium mb-2">
                         {benefit.title}
                       </h3>
-                      <p className="text-muted-foreground">
+                      <p className="text-muted-foreground text-lg">
                         {benefit.description}
                       </p>
                     </div>

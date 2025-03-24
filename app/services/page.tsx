@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -21,6 +22,7 @@ import {
   ShieldCheck,
   Clock,
 } from "lucide-react";
+import CTASection from "@/components/CTASection";
 
 export const metadata: Metadata = {
   title: "Plumbing Services",
@@ -324,7 +326,7 @@ export default function ServicesPage() {
       <section className="py-12 md:py-16 bg-muted/50 px-8 md:px-32 flex flex-col justify-center">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+            <div className="space-y-4">
               <Badge>Our Process</Badge>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
                 How We Work
@@ -402,6 +404,8 @@ export default function ServicesPage() {
               />
             </div>
           </div>
+          {/* <ChooseUs /> */}
+          <CTASection />
         </div>
       </section>
     </>

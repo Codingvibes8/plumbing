@@ -6,8 +6,8 @@ import { testimonials } from "@/constants/data";
 
 export function TestimonialGrid() {
   return (
-    <section className="pt-12 px-4 md:px-6 lg:px-8 bg-background">
-      <div className="container mx-auto">
+    <section className="pt-12 px-8 md:px-16  lg:px-32 w-full flex items-center justify-center">
+      <div className="container mx-auto flex flex-col items-center justify-center w-full">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold tracking-tight mb-2">
             What Our Customers Say

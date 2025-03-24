@@ -5,33 +5,23 @@ import Link from "next/link";
 
 const ChooseUsPage = () => {
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center justify-center">
-          {/* Image Section */}
-          <div className="relative h-[300px] md:h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-xl mx-auto w-full max-w-2xl">
-            <Image
-              src="/why-choose-us.jpg"
-              alt="Professional plumbing team"
-              fill
-              className="object-cover object-center"
-              priority
-            />
-          </div>
-
+    <section className="py-10 px-4 sm:px-6 lg:px-8 w-full">
+      <div className="container mx-auto">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
           {/* Content Section */}
-          <div className="space-y-6 text-center lg:text-left">
-            <div className="flex justify-center lg:justify-start">
+          <div className="space-y-6 flex-1">
+            <div className="flex justify-start">
               <Badge className="text-sm px-4 py-1">Why Choose Us</Badge>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mx-auto lg:mx-0 max-w-2xl">
-              The Trusted Choice for Quality Plumbing Services
-            </h2>
-            <p className="text-lg text-muted-foreground mx-auto lg:mx-0 max-w-2xl">
-              With decades of experience and a commitment to excellence, we
-              deliver reliable plumbing solutions that stand the test of time.
-            </p>
-
+            <div className="flex flex-col gap-2 justify-center items-center">
+              <h2 className="text-2xl flex items-center justify-center font-bold tracking-tight mx-auto w-full">
+                The Trusted Choice for Quality  Plumbing Services
+              </h2>
+              <p className="text-lg flex items-center justify-center text-muted-foreground mx-auto w-full">
+                With decades of experience and a commitment to excellence, we
+                deliver reliable plumbing solutions that stand the test of time.
+              </p>
+            </div>
             <div className="space-y-4 pt-4">
               {[
                 {
@@ -66,7 +56,7 @@ const ChooseUsPage = () => {
                     <h3 className="text-xl font-medium text-left">
                       {feature.title}
                     </h3>
-                    <p className="text-muted-foreground text-left">
+                    <p className="text-muted-foreground text-lg text-left">
                       {feature.content}
                     </p>
                   </div>
@@ -74,11 +64,22 @@ const ChooseUsPage = () => {
               ))}
             </div>
 
-            <div className="flex justify-center lg:justify-start">
-              <Button size="lg" className="mt-6 mx-auto lg:mx-0" asChild>
+            <div className="flex justify-start">
+              <Button size="lg" className="mt-6 mx-auto lg:mx-0 bg-blue-500" asChild>
                 <Link href="/about">Learn More About Us</Link>
               </Button>
             </div>
+          </div>
+
+          {/* Image Section */}
+          <div className="relative h-[300px] md:h-[400px] w-full md:flex-1 rounded-lg overflow-hidden shadow-xl">
+            <Image
+              src="/why-choose-us.jpg"
+              alt="Professional plumbing team"
+              fill
+              className="object-cover object-center"
+              priority
+            />
           </div>
         </div>
       </div>

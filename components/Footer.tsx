@@ -7,9 +7,9 @@ import { Mail, Phone, MapPin } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-green-300 border-t-2">
-      <div className="container flex items-center justify-center px-8 sm:px-12 md:px-24 lg:px-32 py-8 md:py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+    <footer className="border-t-2 bg-green-300 dark:bg-slate-900 flex items-center justify-center">
+      <div className="container flex flex-col items-center justify-center px-8 py-8 md:py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4  items-center justify-center  gap-8 md:gap-12">
           {/* Company Info */}
           <div className="space-y-4">
             <h3 className="text-lg font-bold">Apex Plumbing</h3>
@@ -91,29 +91,29 @@ export function Footer() {
             </form>
           </div>
         </div>
-
-        {/* Copyright */}
-        <div className="mt-8 pt-8 border-t text-center">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Apex Plumbing. All rights reserved.
-          </p>
-          <div className="mt-3 flex flex-wrap justify-center gap-4">
-            {[
-              ["Privacy Policy", "/privacy-policy"],
-              ["Terms of Service", "/terms-of-service"],
-              ["Sitemap", "/sitemap.xml"],
-            ].map(([title, href], index) => (
-              <Link
-                key={index}
-                href={href}
-                className="text-sm hover:text-primary transition-colors"
-              >
-                {title}
-              </Link>
-            ))}
-          </div>
+      </div>
+      {/* Copyright */}
+      <div className="mt-8 pt-8 border-t text-center flex flex-col lg:flex-col items-center justify-center">
+        <p className="text-sm text-muted-foreground">
+          {new Date().getFullYear()} Apex Plumbing. All rights reserved.
+        </p>
+        <div className="mt-3 flex flex-wrap justify-center gap-4">
+          {[
+            ["Privacy Policy", "/privacy-policy"],
+            ["Terms of Service", "/terms-of-service"],
+            ["Sitemap", "/sitemap.xml"],
+          ].map(([title, href], index) => (
+            <Link
+              key={index}
+              href={href}
+              className="text-sm hover:text-primary transition-colors"
+            >
+              {title}
+            </Link>
+          ))}
         </div>
       </div>
+
     </footer>
   );
 }

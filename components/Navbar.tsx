@@ -62,8 +62,8 @@ export function Navbar() {
                   </Link>
                 ))}
                 <div className="flex items-center justify-between pt-4 border-t">
-                  <Button size="sm" className="gap-2 dark:text-white">
-                    <PhoneCall className="h-4 w-4" />
+                  <Button size="sm" className="gap-2 dark:text-white bg-blue-500 dark:hover:bg-blue-600">
+                    <PhoneCall className="h-4 w-4 dark:text-white" />
                     <span className="hidden sm:inline-block">
                       {siteConfig.contact.phone}
                     </span>
@@ -95,7 +95,7 @@ export function Navbar() {
 
         {!isMobile && (
           <div className="flex items-center gap-4">
-            <Button size="sm" className="gap-2 dark:text-white">
+            <Button size="sm" className="gap-2 bg-blue-600 hover:bg-amber-700 dark:hover:bg-blue-700 dark:text-white">
               <PhoneCall className="h-4 w-4" />
               {siteConfig.contact.phone}
             </Button>
