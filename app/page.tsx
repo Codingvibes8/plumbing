@@ -15,7 +15,7 @@ export default function HomePage() {
       <section className="relative py-20 md:py-28 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/placeholder.svg?height=1080&width=1920"
+            src="/hero-background.png"
             alt="Plumbing background"
             fill
             priority
@@ -62,7 +62,7 @@ export default function HomePage() {
             </div>
             <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-xl">
               <Image
-                src="/placeholder.svg?height=1000&width=800"
+                src="/hero-image.png"
                 alt="Professional plumber at work"
                 fill
                 className="object-cover"
@@ -136,7 +136,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl">
               <Image
-                src="/placeholder.svg?height=1000&width=800"
+                src="/why-choose-us.png"
                 alt="Professional plumbing team"
                 fill
                 className="object-cover"

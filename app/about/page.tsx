@@ -54,7 +54,7 @@ export default function AboutPage() {
             </div>
             <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl">
               <Image
-                src="/placeholder.svg?height=1000&width=800"
+                src="/about-hero.png"
                 alt="Plumbing Pros team"
                 fill
                 className="object-cover"
@@ -143,7 +143,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1 relative h-[500px] rounded-lg overflow-hidden shadow-xl">
               <Image
-                src="/placeholder.svg?height=1000&width=800"
+                src="/why-choose-us.png"
                 alt="Our team of professional plumbers"
                 fill
                 className="object-cover"

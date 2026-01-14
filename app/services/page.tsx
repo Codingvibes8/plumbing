@@ -27,7 +27,7 @@ const services = [
       "Upfront pricing with no overtime charges",
       "Licensed and experienced technicians",
     ],
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/service-emergency.png",
     href: "/services/emergency-plumbing",
   },
   {
@@ -42,7 +42,7 @@ const services = [
       "Water line repairs",
       "Preventative solutions",
     ],
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/service-leaks.png",
     href: "/services/leak-detection",
   },
   {
@@ -57,7 +57,7 @@ const services = [
       "Replacement and installation",
       "Water heater flushing",
     ],
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/service-water-heater.png",
     href: "/services/water-heater",
   },
   {
@@ -72,7 +72,7 @@ const services = [
       "Vanity and sink installation",
       "ADA-compliant bathroom solutions",
     ],
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/service-bathroom.png",
     href: "/services/bathroom-remodeling",
   },
   {
@@ -87,7 +87,7 @@ const services = [
       "Preventative maintenance",
       "Sewer line cleaning",
     ],
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/service-drains.png",
     href: "/services/drain-cleaning",
   },
   {
@@ -102,7 +102,7 @@ const services = [
       "Extended warranties",
       "Customized maintenance schedules",
     ],
-    image: "/placeholder.svg?height=600&width=800",
+    image: "/service-maintenance.png",
     href: "/services/maintenance",
   },
 ]
@@ -328,7 +328,7 @@ export default function ServicesPage() {
 
             <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl">
               <Image
-                src="/placeholder.svg?height=1000&width=800"
+                src="/services-process.png"
                 alt="Plumber working on pipes"
                 fill
                 className="object-cover"
