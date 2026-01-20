@@ -67,6 +67,11 @@ export const metadata: Metadata = {
     generator: 'v0.dev'
 }
 
+import { ChatWidget } from "@/components/chat-widget"
+import { Toaster as SonnerToaster } from "@/components/ui/sonner"
+
+// ... imports
+
 export default function RootLayout({
   children,
 }: {
@@ -82,7 +87,9 @@ export default function RootLayout({
             <main className="flex-1">{children}</main>
             <Footer />
           </div>
+          <ChatWidget />
           <Toaster />
+          <SonnerToaster />
         </ThemeProvider>
       </body>
     </html>

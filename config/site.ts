@@ -10,9 +10,9 @@ export const siteConfig = {
     instagram: "https://instagram.com/plumbingpros",
   },
   contact: {
-    phone: "(555) 123-4567",
+    phone: "+44 755 149 2557",
     email: "info@plumbingpros.com",
-    address: "123 Main Street, Anytown, USA 12345",
+    address: "123 Topside Street, Hamstead, NW8 7UH",
   },
 }
 

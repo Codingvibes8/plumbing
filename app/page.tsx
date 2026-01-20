@@ -12,61 +12,63 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative py-20 md:py-28 overflow-hidden">
+      <section className="relative py-24 md:py-32 overflow-hidden bg-black/5">
         <div className="absolute inset-0 z-0">
           <Image
             src="/hero-background.png"
             alt="Plumbing background"
             fill
             priority
-            className="object-cover opacity-10 dark:opacity-5"
+            className="object-cover opacity-20 dark:opacity-10"
           />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/30" />
         </div>
         <div className="container relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <Badge className="px-3 py-1 text-sm" variant="secondary">
+            <div className="space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
+              <Badge className="px-4 py-1.5 text-sm font-medium shadow-sm" variant="secondary">
                 24/7 Emergency Service
               </Badge>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight drop-shadow-sm leading-tight text-foreground">
                 Professional Plumbing Services You Can Trust
               </h1>
-              <p className="text-xl text-muted-foreground">
+              <p className="text-xl text-muted-foreground max-w-lg leading-relaxed">
                 Expert plumbers delivering reliable solutions for all your residential and commercial plumbing needs.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button size="lg" asChild>
-                  <Link href="/contact">Get a Free Quote</Link>
+                <Button size="lg" className="text-base px-8 h-12 shadow-lg shadow-primary/20 transition-all hover:scale-105" asChild>
+                  <Link href="/book-online">Book Online Now</Link>
                 </Button>
-                <Button size="lg" variant="outline" className="gap-2" asChild>
+                <Button size="lg" variant="outline" className="gap-2 text-base px-8 h-12 bg-background/50 backdrop-blur-sm border-primary/20 hover:bg-background/80 transition-all" asChild>
                   <Link href={`tel:${siteConfig.contact.phone.replace(/[^0-9]/g, "")}`}>
                     <PhoneCall className="h-4 w-4" />
                     {siteConfig.contact.phone}
                   </Link>
                 </Button>
               </div>
-              <div className="flex flex-wrap gap-6 pt-6">
+              <div className="flex flex-wrap gap-x-8 gap-y-4 pt-4 text-sm font-medium text-muted-foreground/80">
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5 text-primary" />
+                  <CheckCircle className="h-5 w-5 text-green-500" />
                   <span>Licensed & Insured</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Clock className="h-5 w-5 text-primary" />
+                  <Clock className="h-5 w-5 text-blue-500" />
                   <span>Same Day Service</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <ShieldCheck className="h-5 w-5 text-primary" />
+                  <ShieldCheck className="h-5 w-5 text-purple-500" />
                   <span>100% Satisfaction</span>
                 </div>
               </div>
             </div>
-            <div className="relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-xl">
+            <div className="relative h-[400px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl animate-in fade-in slide-in-from-right-8 duration-1000 delay-200">
               <Image
                 src="/hero-image.png"
                 alt="Professional plumber at work"
                 fill
-                className="object-cover"
+                className="object-cover transform transition-transform duration-700 hover:scale-105"
               />
+              <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl" />
             </div>
           </div>
         </div>

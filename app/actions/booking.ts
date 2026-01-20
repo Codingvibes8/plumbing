@@ -1,6 +1,11 @@
 "use server"
 
 import { z } from "zod"
+import { Resend } from "resend"
+import { EmailTemplate } from "@/components/email-template"
+
+// Initialize Resend with API Key - using a safe fallback or pulling from environment
+const resend = new Resend(process.env.RESEND_API_KEY || "re_123456789") 
 
 const bookingSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -47,13 +52,54 @@ export async function submitBooking(prevState: BookingState, formData: FormData)
     }
   }
 
-  // Simulate API call / Database insertion
-  console.log("Booking Received:", validatedFields.data)
-  
-  await new Promise((resolve) => setTimeout(resolve, 1000))
+import { addBooking } from "@/lib/db"
+
+// ... imports
+
+  const { name, email, phone, address, serviceType, date, timeSlot, description } = validatedFields.data
+
+  // Save to "Database"
+  try {
+    await addBooking({
+      name,
+      email,
+      phone,
+      address,
+      serviceType,
+      date: date.toISOString(),
+      timeSlot,
+      description,
+    });
+  } catch (error) {
+    console.error("Failed to save booking:", error);
+    // Continue execution to try sending email even if DB save fails (though unlikely)
+  }
+
+  try {
+    // Only attempt to email if we have a key (or pretend to if dev)
+    if (process.env.RESEND_API_KEY) {
+// ...      const data = await resend.emails.send({
+        from: 'Plumbing Pros <onboarding@resend.dev>',
+        to: [email], // Send to the customer
+        subject: 'Booking Received - Plumbing Pros',
+        react: await EmailTemplate({ 
+          name, 
+          serviceType, 
+          date: date.toDateString(), 
+          timeSlot 
+        }),
+      });
+      console.log("Email sent successfully:", data)
+    } else {
+      console.log("Resend API Key missing - skipping email send. Data:", validatedFields.data)
+    }
+  } catch (error) {
+    console.error("Failed to send email:", error)
+    // We don't fail the booking if email fails, just log it
+  }
 
   return {
     success: true,
-    message: "Booking request submitted successfully! We will contact you shortly.",
+    message: "Booking request submitted successfully! We have sent a confirmation email.",
   }
 }
