@@ -5,7 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { PhoneCall, Menu, X, ChevronDown } from "lucide-react"
+import { PhoneCall, Menu, X, ChevronDown, CalendarDays } from "lucide-react"
 import { siteConfig } from "@/config/site"
 import { ModeToggle } from "@/components/mode-toggle"
 import { useMobile } from "@/hooks/use-mobile"
@@ -80,13 +80,23 @@ export function Navbar() {
                     ))}
                   </div>
                 </div>
-                <div className="flex items-center justify-between pt-4 border-t">
-                  <Button size="sm" className="gap-2">
-                    <PhoneCall className="h-4 w-4" />
-                    <span className="hidden sm:inline-block">{siteConfig.contact.phone}</span>
-                    <span className="sm:hidden">Call Now</span>
+                <div className="flex flex-col gap-4 pt-4 border-t">
+                  <Button size="lg" className="w-full gap-2" asChild>
+                    <Link href="/book-online">
+                      <CalendarDays className="h-4 w-4" />
+                      Book Online
+                    </Link>
                   </Button>
-                  <ModeToggle />
+                  <div className="flex items-center justify-between">
+                    <Button size="sm" variant="outline" className="gap-2" asChild>
+                      <Link href={`tel:${siteConfig.contact.phone.replace(/[^0-9]/g, "")}`}>
+                        <PhoneCall className="h-4 w-4" />
+                        <span className="hidden sm:inline-block">{siteConfig.contact.phone}</span>
+                        <span className="sm:inline-block">Call Now</span>
+                      </Link>
+                    </Button>
+                    <ModeToggle />
+                  </div>
                 </div>
               </div>
             )}
@@ -140,9 +150,17 @@ export function Navbar() {
 
         {!isMobile && (
           <div className="flex items-center gap-4">
-            <Button size="sm" className="gap-2">
-              <PhoneCall className="h-4 w-4" />
-              {siteConfig.contact.phone}
+            <Button variant="default" size="sm" className="gap-2" asChild>
+               <Link href="/book-online">
+                <CalendarDays className="h-4 w-4" />
+                Book Online
+              </Link>
+            </Button>
+            <Button size="sm" variant="outline" className="gap-2" asChild>
+              <Link href={`tel:${siteConfig.contact.phone.replace(/[^0-9]/g, "")}`}>
+                <PhoneCall className="h-4 w-4" />
+                {siteConfig.contact.phone}
+              </Link>
             </Button>
             <ModeToggle />
           </div>
