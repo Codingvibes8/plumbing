@@ -1,5 +1,4 @@
-import fs from 'fs/promises';
-import path from 'path';
+import { supabase } from './supabase';
 
 export interface Booking {
   id: string;
@@ -7,65 +6,51 @@ export interface Booking {
   email: string;
   phone: string;
   address: string;
-  serviceType: string;
+  service_type: string;
   date: string;
-  timeSlot: string;
+  time_slot: string;
   description?: string;
   status: 'pending' | 'confirmed' | 'completed' | 'cancelled';
-  createdAt: string;
-}
-
-const DB_PATH = path.join(process.cwd(), 'data');
-const DB_FILE = path.join(DB_PATH, 'bookings.json');
-
-// Ensure data directory exists
-async function ensureDb() {
-  try {
-    await fs.access(DB_PATH);
-  } catch {
-    await fs.mkdir(DB_PATH, { recursive: true });
-  }
-
-  try {
-    await fs.access(DB_FILE);
-  } catch {
-    await fs.writeFile(DB_FILE, JSON.stringify([], null, 2));
-  }
+  created_at: string;
 }
 
 export async function getBookings(): Promise<Booking[]> {
-  await ensureDb();
-  const data = await fs.readFile(DB_FILE, 'utf-8');
-  try {
-    return JSON.parse(data);
-  } catch (error) {
+  const { data, error } = await supabase
+    .from('bookings')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Error fetching bookings:', error);
     return [];
   }
+
+  return data || [];
 }
 
-export async function addBooking(booking: Omit<Booking, 'id' | 'status' | 'createdAt'>): Promise<Booking> {
-  const bookings = await getBookings();
-  
-  const newBooking: Booking = {
-    ...booking,
-    id: Math.random().toString(36).substring(2, 9),
-    status: 'pending',
-    createdAt: new Date().toISOString(),
-  };
+export async function addBooking(booking: Omit<Booking, 'id' | 'status' | 'created_at'>): Promise<Booking | null> {
+  const { data, error } = await supabase
+    .from('bookings')
+    .insert([{ ...booking, status: 'pending' }])
+    .select()
+    .single();
 
-  bookings.unshift(newBooking); // Add to top
-  
-  await fs.writeFile(DB_FILE, JSON.stringify(bookings, null, 2));
-  
-  return newBooking;
+  if (error) {
+    console.error('Error adding booking:', error);
+    return null;
+  }
+
+  return data;
 }
 
 export async function updateBookingStatus(id: string, status: Booking['status']): Promise<void> {
-  const bookings = await getBookings();
-  const index = bookings.findIndex(b => b.id === id);
-  
-  if (index !== -1) {
-    bookings[index].status = status;
-    await fs.writeFile(DB_FILE, JSON.stringify(bookings, null, 2));
+  const { error } = await supabase
+    .from('bookings')
+    .update({ status })
+    .eq('id', id);
+
+  if (error) {
+    console.error('Error updating booking status:', error);
   }
 }
+

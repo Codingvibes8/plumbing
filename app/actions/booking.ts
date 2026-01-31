@@ -3,9 +3,10 @@
 import { z } from "zod"
 import { Resend } from "resend"
 import { EmailTemplate } from "@/components/email-template"
+import { addBooking } from "@/lib/db"
 
-// Initialize Resend with API Key - using a safe fallback or pulling from environment
-const resend = new Resend(process.env.RESEND_API_KEY || "re_123456789") 
+// Initialize Resend with API Key from environment
+const resend = new Resend(process.env.Resend_Key || process.env.RESEND_API_KEY)
 
 const bookingSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -52,35 +53,35 @@ export async function submitBooking(prevState: BookingState, formData: FormData)
     }
   }
 
-import { addBooking } from "@/lib/db"
-
-// ... imports
-
   const { name, email, phone, address, serviceType, date, timeSlot, description } = validatedFields.data
 
-  // Save to "Database"
+  // Save to Supabase
   try {
     await addBooking({
       name,
       email,
       phone,
       address,
-      serviceType,
+      service_type: serviceType,
       date: date.toISOString(),
-      timeSlot,
+      time_slot: timeSlot,
       description,
     });
   } catch (error) {
     console.error("Failed to save booking:", error);
-    // Continue execution to try sending email even if DB save fails (though unlikely)
+    return {
+      success: false,
+      message: "Failed to save booking. Please try again.",
+    }
   }
 
+  // Send confirmation email
   try {
-    // Only attempt to email if we have a key (or pretend to if dev)
-    if (process.env.RESEND_API_KEY) {
-// ...      const data = await resend.emails.send({
+    const resendKey = process.env.Resend_Key || process.env.RESEND_API_KEY
+    if (resendKey) {
+      const data = await resend.emails.send({
         from: 'Plumbing Pros <onboarding@resend.dev>',
-        to: [email], // Send to the customer
+        to: [email],
         subject: 'Booking Received - Plumbing Pros',
         react: await EmailTemplate({ 
           name, 
@@ -103,3 +104,4 @@ import { addBooking } from "@/lib/db"
     message: "Booking request submitted successfully! We have sent a confirmation email.",
   }
 }
+

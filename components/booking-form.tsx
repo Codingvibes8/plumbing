@@ -35,6 +35,8 @@ import {
 import { Textarea } from "@/components/ui/textarea"
 import { toast } from "sonner"
 
+import { submitBooking } from "@/app/actions/booking"
+
 const bookingSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
@@ -67,15 +69,33 @@ export function BookingForm() {
   async function onSubmit(data: BookingFormValues) {
     setIsSubmitting(true)
     
-    // Simulate server delay
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    
-    console.log("Booking submitted:", data)
-    
-    setIsSubmitting(false)
-    setIsSuccess(true)
-    toast.success("Booking request submitted successfully!")
-    form.reset()
+    try {
+      // Create FormData for server action
+      const formData = new FormData()
+      formData.append("name", data.name)
+      formData.append("email", data.email)
+      formData.append("phone", data.phone)
+      formData.append("address", data.address)
+      formData.append("serviceType", data.serviceType)
+      formData.append("date", data.date.toISOString())
+      formData.append("timeSlot", data.timeSlot)
+      formData.append("description", data.description || "")
+
+      const result = await submitBooking({ success: false, message: "" }, formData)
+      
+      if (result.success) {
+        setIsSuccess(true)
+        toast.success(result.message)
+        form.reset()
+      } else {
+        toast.error(result.message)
+      }
+    } catch (error) {
+      console.error("Submission error:", error)
+      toast.error("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (isSuccess) {
